@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="admin-dashboard">
+
+  <!-- Sidebar Navigation -->
+  <nav class="sidebar">
+    <h2>Admin Panel</h2>
+    <ul>
+      <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+      <li><a href="{{ url_for('manage_users') }}">Manage Users</a></li>
+      <li><a href="{{ url_for('view_reports') }}">View Reports</a></li>
+      <li><a href="{{ url_for('settings') }}">Settings</a></li>
+      <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main-content">
+
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+      <h1>Admin Dashboard</h1>
+      <p>Welcome, {{ session['user_email'] }}</p>
+    </header>
+
+    <!-- Stats Cards -->
+    <section class="stats-cards">
+      <div class="card">
+        <h3>Total Users</h3>
+        <p>152</p>
+      </div>
+      <div class="card">
+        <h3>Malicious IPs</h3>
+        <p>348</p>
+      </div>
+      <div class="card">
+        <h3>Alerts Today</h3>
+        <p>24</p>
+      </div>
+    </section>
+
+    <!-- Recent Alerts -->
+    <section class="recent-alerts">
+      <h2>Recent Alerts</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>IP / URL</th>
+            <th>Severity</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>192.168.1.10</td>
+            <td class="high">High</td>
+            <td>2025-08-14</td>
+          </tr>
+          <tr>
+            <td>malicious-site.com</td>
+            <td class="medium">Medium</td>
+            <td>2025-08-14</td>
+          </tr>
+          <tr>
+            <td>10.0.0.5</td>
+            <td class="low">Low</td>
+            <td>2025-08-13</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Threat Feeds -->
+    <section class="threat-feeds">
+      <h2>Threat Feeds</h2>
+      <ul>
+        <li>New Malware Hashes detected today: 15</li>
+        <li>Suspicious URLs reported: 7</li>
+        <li>AbuseIPDB new entries: 20</li>
+      </ul>
+    </section>
+
+  </div>
+</div>
+{% endblock %}

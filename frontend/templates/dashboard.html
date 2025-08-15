@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - Threat Intelligence Hub{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h2>Welcome, {{ session.get('user_email', 'User') }}</h2>
+    <p>Monitor the latest threats, malicious IPs, URLs, and malware indicators.</p>
+
+    <!-- =======================
+         Stats Cards Section
+    ======================= -->
+    <div class="stats-cards">
+        <div class="card">
+            <h3>Malicious IPs</h3>
+            <p>125</p>
+            <a href="{{ url_for('view_ips') }}" class="card-btn">View Details</a>
+        </div>
+        <div class="card">
+            <h3>Suspicious URLs</h3>
+            <p>78</p>
+            <a href="{{ url_for('view_urls') }}" class="card-btn">View Details</a>
+        </div>
+        <div class="card">
+            <h3>Malware Indicators</h3>
+            <p>54</p>
+            <a href="{{ url_for('view_malware') }}" class="card-btn">View Details</a>
+        </div>
+    </div>
+
+    <!-- =======================
+         Quick Actions Section
+    ======================= -->
+    <div class="dashboard-actions">
+        <a href="{{ url_for('logout') }}" class="action-btn">Logout</a>
+        <a href="{{ url_for('report_threat') }}" class="action-btn">Report Threat</a>
+        <a href="{{ url_for('profile') }}" class="action-btn">Profile Settings</a>
+    </div>
+
+    <!-- =======================
+         Latest Threats Table
+    ======================= -->
+    <div class="threat-table">
+        <h3>Latest Threats</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Indicator</th>
+                    <th>Severity</th>
+                    <th>MITRE Mapping</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>IP</td>
+                    <td>192.168.1.100</td>
+                    <td>High</td>
+                    <td>T1071.001</td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>http://malicious.example.com</td>
+                    <td>Medium</td>
+                    <td>T1566.002</td>
+                </tr>
+                <tr>
+                    <td>File Hash</td>
+                    <td>abcd1234efgh5678</td>
+                    <td>Critical</td>
+                    <td>T1059</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
